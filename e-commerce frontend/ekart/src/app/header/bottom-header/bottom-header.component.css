@@ -1,0 +1,27 @@
+
+.ekart-bottom-header {
+    background-color: #606366;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+/* Bottom Navigation Links */
+.ekart-bottom-nav {
+    display: flex;
+    text-align: center;
+ 
+}
+
+.ekart-bottom-nav a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+    font-size: 1.1em;
+}
+
+.ekart-bottom-nav a:hover {
+    text-decoration: underline;
+}

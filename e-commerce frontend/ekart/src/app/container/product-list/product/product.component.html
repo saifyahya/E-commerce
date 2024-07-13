@@ -1,0 +1,25 @@
+
+<div class="product-list">
+    <div class="upper-card">
+        <div class="wish-list">
+            <i class="fa-regular fa-heart" 
+                [ngStyle]="{'color': addedToListMessage ? 'red' : ''}"
+                (mouseenter)="showAddToWishListMessage()" 
+                (mouseleave)="hideAddToWishListMessage()"
+                (click)="showAddedToWishListMessage()">
+            </i>
+            <div class="tooltip" *ngIf="addToListMessage && !addedToListMessage">Add to wish list</div>
+        </div>
+        <span class="ribbon" *ngIf="product.discountPercentage>5">{{product.discountPercentage+'% OFF'}}</span>
+        <a (click)="selectProduct()" href="#popup1">
+            <img [src]="product.images[0]" alt="image">
+        </a>
+        <p class="price">{{product.price | currency}}</p>
+    </div>
+    <h5>{{product.title}}</h5>
+    
+     <p [ngClass]="{'inStock': product.stock > 0, 'outOfStock': product.stock <= 0}">
+        {{product.stock > 0 ? 'Items in stock: ' + product.stock : 'Out of stock'}}
+    </p>
+    <p *ngIf="product.discountPercentage>5">Price after discount: {{getPriceAfterDiscount(product).toFixed(2) | currency}}</p>
+</div>

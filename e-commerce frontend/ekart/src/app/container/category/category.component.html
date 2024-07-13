@@ -1,0 +1,8 @@
+<div class="category-list">
+    <h2>Categories</h2>
+    <input type="text" class="search-input" placeholder="Search categories...">
+    <ul>
+      <li *ngFor="let category of categories">{{ formatCategory(category) }}</li>
+    </ul>
+  </div>
+  

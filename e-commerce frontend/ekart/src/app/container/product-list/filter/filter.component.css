@@ -1,0 +1,15 @@
+#inStock, #outOfStock, #all{
+    margin: 0px 0px 0px 5px;
+}
+
+#inStockLabel, #outOfStockLabel, #allLabel{
+    margin: 5px 0px 0px 20px;
+}
+
+.filter{
+    margin: 5px 5px;
+}
+*{
+    user-select: none; /* Prevents text selection */
+  
+  }

@@ -1,0 +1,20 @@
+<div class="ekart-header">
+    <div class="ekart-logo">
+        eKart
+    </div>
+
+ <header-form  (searchedValue)="getSearchedValue($event)"></header-form>
+
+    <div class="ekat-header-nav">
+        <div class="ekart-top-nav">
+            <a href="#">Help</a>
+            <a href="#">Exchange ad Returns</a>
+            <a href="#">OrderTracker</a>
+            <a href="#">Signup/ Login</a>
+        </div>
+    </div>
+</div>
+    <bottom-header></bottom-header>
+
+<p *ngIf="searchResult!==''">Searched Result for: {{searchResult}}</p>
+

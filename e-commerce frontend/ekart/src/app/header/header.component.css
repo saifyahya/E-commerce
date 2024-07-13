@@ -1,0 +1,46 @@
+
+
+/* Header Container */
+.ekart-header {
+    background-color: #343a40;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    
+}
+
+
+/* Logo */
+.ekart-logo {
+    font-family: "Concert One", sans-serif;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+
+/* Navigation Container */
+.ekat-header-nav {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Top Navigation Links */
+.ekart-top-nav {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.ekart-top-nav a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.ekart-top-nav a:hover {
+    text-decoration: underline;
+}
+
+

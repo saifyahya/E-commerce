@@ -1,0 +1,4 @@
+<app-filter (filterSelectionEvent)="filterProducts($event)"></app-filter>
+<ng-container *ngFor="let p of apiProducts">
+<app-product  [product]="p" (onSelectProduct)="selectedProduct($event)"></app-product>
+</ng-container>

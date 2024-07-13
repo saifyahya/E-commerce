@@ -1,0 +1,9 @@
+<div class="filter" >
+    <span>Filter: </span>
+    <label id="allLabel" for="all">All</label>
+<input id="all" type="radio" value="all" name="filter" [(ngModel)]="selectedFilter" (change)="select()">
+<label id="inStockLabel" for="inStock">In Stock</label>
+<input id="inStock" type="radio" value="inStock" name="filter" [(ngModel)]="selectedFilter" (change)="select()">
+<label id="outOfStockLabel" for="outOfStock">Out Of Stock</label>
+<input id="outOfStock" type="radio" value="outOfStock" name="filter" [(ngModel)]="selectedFilter" (change)="select()">
+</div>

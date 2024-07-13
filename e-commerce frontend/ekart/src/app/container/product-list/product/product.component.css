@@ -1,0 +1,182 @@
+.product-list {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 16px;
+    text-align: start;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    width: 300px;
+    display: inline-block;
+    vertical-align: top;
+    font-family: Montserrat;
+    user-select: none; /* Prevents text selection */
+    position: relative; /* For positioning the discount span */
+}
+
+.toastMessage {
+    position: fixed;
+    top: -20px; /* Adjust to move the toast message above the screen */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: small;
+    display: inline-block;
+    border-radius: 8px;
+    color: white;
+    padding: 10px;
+    background-color: red; /* Add background color for better visibility */
+    z-index: 1000; /* Ensure it is above other elements */
+}
+
+.wish-list {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    display: flex;
+    justify-content: space-between;
+    width: auto;
+    border-radius: 8px;
+    padding: 5px;
+}
+
+.wish-list i {
+    padding: 5px 5px;
+    color: #6d6d13;
+}
+
+.wish-list i:hover {
+    color: red;
+}
+
+.fa-heart {
+    font-size: 25px;
+    width: fit-content;
+    height: fit-content;
+    display: inline-block;
+}
+
+.upper-card {
+    position: relative;
+    background-color: #f2f1f1;
+}
+
+.product-list img {
+    width: 100%;
+    height: 300px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.product-list h5 {
+    font-size: 1em;
+    padding: 10px;
+}
+
+.product-list p {
+    margin: 5px 0;
+    color: #555;
+    font-size: 1em;
+    padding-left: 10px;
+}
+
+.product-list .price {
+    position: absolute;
+    bottom: 2px;
+    left: 2px;
+    font-size: 1em;
+    color: white;
+    font-weight: bold;
+    text-align: start;
+    padding: 10px;
+    margin: 0;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+}
+
+.product-list .inStock {
+    font-size: 0.9em;
+    color: #27ae60;
+    padding-left: 10px;
+
+}
+
+.product-list .outOfStock {
+    font-size: 0.9em;
+    color: #e74c3c;
+    padding-left: 10px;
+
+}
+
+.product-list button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    margin: 5px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+.product-list button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.product-list button:not(:disabled):hover {
+    background-color: #0056b3;
+}
+
+.product-list span {
+    display: inline-block;
+    font-size: 1em;
+    padding: 5px;
+}
+
+.product-list:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* HTML: <div class="ribbon">Your text content</div> */
+.ribbon {
+    font-weight: bold;
+    color: #fff;
+  }
+  .ribbon {
+    --f: .5em; /* control the folded part*/
+    --r: .8em; /* control the ribbon shape */
+    position: absolute;
+    top: 15px;
+    right: calc(-1*var(--f));
+    padding-inline: .25em;
+    line-height: 1;
+    background: #FA6900;
+    border-bottom: var(--f) solid #0005;
+    border-left: var(--r) solid #0000;
+    clip-path: 
+      polygon(var(--r) 0,100% 0,100% calc(100% - var(--f)),calc(100% - var(--f)) 100%,
+        calc(100% - var(--f)) calc(100% - var(--f)),var(--r) calc(100% - var(--f)),
+        0 calc(50% - var(--f)/2));
+  }
+.wish-list .tooltip {
+    position: absolute;
+    top: -30px; /* Adjust according to your layout */
+    left: 70px;
+    transform: translateX(-50%);
+    background: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 3px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s;
+    z-index: 10; /* Ensure tooltip is above other elements */
+}
+
+.wish-list:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+}

@@ -1,0 +1,57 @@
+<div id="popup1" class="overlay" *ngIf="selectedProduct">
+  <div class="popup">
+
+    <img [src]="selectedProduct.images[0]">
+    <div class="d">
+      <h2>{{selectedProduct.title}}</h2>
+      <p class="inStock" *ngIf="selectedProduct.stock>0;else outOfStockP">
+        {{'Items in stock: ' + selectedProduct.stock}}
+      </p>
+      <ng-template #outOfStockP>
+        <p class="outOfStock">Out of stock</p>
+      </ng-template>
+    </div>
+
+    <div class="category">
+      <span *ngFor="let tag of selectedProduct.tags">{{tag}}</span> 
+    </div>
+
+    <div class="description">
+      <p>{{selectedProduct.description}}</p>
+    </div>
+
+    <div class="totalPrice">
+      Price:
+      <span id="before-price" *ngIf="selectedProduct.discountPercentage>5">{{selectedProduct.price| currency}}</span>
+      <span id="after-price">{{getPriceAfterDiscount(selectedProduct) | currency}}</span>
+    </div>
+
+    <div class="sizes">
+      <p>Available Sizes</p>
+      <hr>
+      <div class=""><span *ngFor="let tag of selectedProduct.tags">{{tag}}</span></div>
+
+    </div>
+
+    <div class="colors">
+      <p>Available Colors</p>
+      <hr>
+      <div class="colorsStock"><span>Black</span> <span>Red</span> <span>White</span></div>
+    </div>
+    <a class="close" href="#">&times;</a>
+
+    <div class="totalCheckoutPrice">
+      <div class="quantitySelect" *ngIf="selectedProduct.stock>1"> 
+        <select [(ngModel)]="selectedQuantity">
+          <option [disabled]="selectedProduct.stock<1" *ngFor="let i of getStockArray()" [ngValue]="i">Quantity = {{i}}</option>
+        </select>
+       </div>
+
+      <div class="" *ngIf="selectedProduct.stock>1"> <span>Total Price: </span>
+        <span>{{(getPriceAfterDiscount(selectedProduct)*selectedQuantity).toFixed(2) | currency}}</span> <br><hr>
+        <button class="checkout" [disabled]="selectedProduct.stock<1">Checkout</button>
+      </div> 
+
+</div>
+  </div>
+</div>
