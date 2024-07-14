@@ -1,15 +1,16 @@
+import { ApiProducts } from "../api-products/api-products";
 import { Product } from "../product/product";
 
 export class Cart{   
-    private code:string;
+     code:string;
 
-    private quantity:number;
+     quantity:number;
 
-    private price:number;
+     price:number;
 
-    private products:Product[];
+     products:ApiProducts[];
 
-    constructor(code:string,quantity:number,price:number,products:Product[]){
+    constructor(code:string,quantity:number,price:number,products:ApiProducts[]){
         this.code=code;
         this.price=price;
         this.products=products;

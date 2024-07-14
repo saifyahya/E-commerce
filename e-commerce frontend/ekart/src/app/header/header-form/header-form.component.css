@@ -57,3 +57,15 @@ form {
 button.searchicon {
     cursor: pointer;
 }
+
+
+
+.classFromDirective{
+    color:red;  
+}
+.new-class{
+    color:aquamarine;
+}
+.saif-class{
+    font-size: large;
+}

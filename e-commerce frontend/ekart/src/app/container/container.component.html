@@ -1,29 +1,15 @@
 <div class="container">
     <app-category></app-category>
-    
     <div class="content">
-        <app-product-list [searchedInput]="recievedSearchedInput" (sendSelectedProduct)="recieveSelectedProduct($event)">
+        <!-- <app-product-list [searchedInput]="recievedSearchedInput" (sendSelectedProduct)="recieveSelectedProduct($event)">
+        </app-product-list> -->
+        <app-product-list  (sendSelectedProduct)="recieveSelectedProduct($event)">
         </app-product-list>
         
-        <product-detail [selectedProduct]="recievedProduct">
-        </product-detail>
+        <product-detail *ngIf="showProductDetails"></product-detail>
         
-        <div class="latest-products">
-            <div class="title">
-                <h1>Latest Arrival in Most Popular Brands</h1>
-            </div>
-            <app-featured-brands>
-                <h3 class="heading">New Arrival In Zara</h3>
-                <button class="call-to-action">Learn More</button>
-            </app-featured-brands>
-            <app-featured-brands>
-                <h3 class="heading">New Arrival In Adidas</h3>
-                <button class="call-to-action">Learn More</button>
-            </app-featured-brands>
-            <app-featured-brands>
-                <h3 class="heading">New Arrival In Nike</h3>
-                <button class="call-to-action">Learn More</button>
-            </app-featured-brands>
-        </div>
+        <!-- <router-outlet></router-outlet> -->
+
     </div>
+
 </div>

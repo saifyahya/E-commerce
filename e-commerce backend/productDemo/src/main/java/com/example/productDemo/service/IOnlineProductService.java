@@ -7,4 +7,10 @@ import java.util.List;
 
 public interface IOnlineProductService {
     ProductApiResponseDto getAllOnlineProducts();
+    ProductApiResponseDto getProductsByName(String name);
+    ProductApiResponseDto getProductsByCategory(String category);
+
+
+
+
 }

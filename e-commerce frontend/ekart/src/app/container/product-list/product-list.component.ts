@@ -1,21 +1,59 @@
-import { Component, DoCheck, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, DoCheck, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange, SimpleChanges } from '@angular/core';
 import { Product } from '../../model/product/product';
 import { ProductService } from '../../service/product/product.service';
 import { ApiProducts } from '../../model/api-products/api-products';
+import { ActivatedRoute, Router } from '@angular/router';
+import { debounceTime, distinctUntilChanged } from 'rxjs';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css'
 })
-export class ProductListComponent implements DoCheck,OnInit{
+export class ProductListComponent implements OnInit,OnChanges{
   ngOnInit(): void {
-    this.getAllProducts();
+    this.checkCurrentQueryParams();
   }
 
+  constructor(private productService:ProductService, private route: ActivatedRoute,private router:Router,private location:Location){}
 
-  constructor(private productService:ProductService){}
 apiProducts:ApiProducts[]=[]
+
+
+
+checkCurrentQueryParams(): void {
+  this.route.queryParamMap.pipe(      
+    debounceTime(100),
+    distinctUntilChanged()  // Only emit when the query parameters change
+  ).subscribe(queryParamMap => {
+    const name = queryParamMap.get('name');
+    const category = queryParamMap.get('category');
+    if(this.router.url==='/products/detail'){
+this.location.back();
+    }
+    else if (name) {
+      console.log("Query parameter 'name' found:", name);
+      this.getProductsByName(name);
+    } 
+    else if (category) {
+      console.log("Query parameter 'category' found:", category);
+      this.getProductsByCategory(category);
+    } 
+    else {
+      console.log("Query parameter 'name' not found");
+      this.getAllProducts();
+    }
+  });
+
+  // Additional logging to diagnose issue
+  console.log('Current route:', this.router.url);
+  console.log('Query parameters:', this.route.snapshot.queryParamMap.keys);
+  console.log('Query parameter "name":', this.route.snapshot.queryParamMap.get('name'));
+  console.log('Full route snapshot:', this.route.snapshot);
+}
+
 
   getAllProducts(){
     this.productService.getAllProducts().subscribe({
@@ -29,15 +67,43 @@ apiProducts:ApiProducts[]=[]
         console.error('Failed to fetch products:', err);
       }
     });
-  
   }
 
-ngDoCheck(): void {
-    console.log(this.searchedInput)
+
+  getProductsByName(name:string){
+    this.productService.getProdctsBySearch(name).subscribe({
+      next: (res) => {
+        this.apiProducts = res;
+        ApiProducts.optimizeDiscountPercentage(this.apiProducts);
+
+        console.log("inside api method",this.apiProducts);
+      },
+      error: (err) => {
+        console.error('Failed to fetch products:', err);
+      }
+    });
+    }
+
+    getProductsByCategory(name:string){
+      this.productService.getProdctsByCategory(name).subscribe({
+        next: (res) => {
+          this.apiProducts = res;
+          ApiProducts.optimizeDiscountPercentage(this.apiProducts);
+  
+          console.log("inside api method",this.apiProducts);
+        },
+        error: (err) => {
+          console.error('Failed to fetch products:', err);
+        }
+      });
+      }
+
+ngOnChanges(changes: SimpleChanges): void {
+    console.log('p-list changes',changes)
 }
 
-  @Input()
-  searchedInput:string='';
+  // @Input()
+  // searchedInput:string='';
 
   @Output()
 sendSelectedProduct:EventEmitter<ApiProducts>= new EventEmitter();

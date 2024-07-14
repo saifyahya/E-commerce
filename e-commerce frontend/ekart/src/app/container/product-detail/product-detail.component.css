@@ -142,7 +142,7 @@ margin-top: 10px;
 
 
  button {
-  background-color: #007bff;
+  /* background-color: #007bff; */
   color: white;
   border: none;
   padding: 10px 16px;
@@ -153,13 +153,13 @@ margin-top: 10px;
   transition: background-color 0.3s;
 }
 
- button:disabled {
+ /* button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
 }
  button:not(:disabled):hover {
   background-color: #0056b3;
-}
+} */
 .inStock {
   font-size: 0.9em;
   color: #27ae60;
@@ -210,4 +210,42 @@ padding: 10px;
   .popup {
       width: 70%;
   }
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 15px;
+  gap: 15px;
+  background-color: #181717;
+  outline: 3px #181717 solid;
+  outline-offset: -3px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: 400ms;
+}
+
+.button .text {
+  color: white;
+  font-weight: 700;
+  font-size: 1em;
+  transition: 400ms;
+}
+
+.button svg path {
+  transition: 400ms;
+}
+
+.button:hover {
+  background-color: transparent;
+}
+
+.button:hover .text {
+  color: #181717;
+}
+
+.button:hover svg path {
+  fill: #181717;
 }

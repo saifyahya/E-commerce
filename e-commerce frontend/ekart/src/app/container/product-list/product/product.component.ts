@@ -2,6 +2,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Product } from '../../../model/product/product';
 import { EmptyExpr } from '@angular/compiler';
 import { ApiProducts } from '../../../model/api-products/api-products';
+import { ProductService } from '../../../service/product/product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -9,6 +11,8 @@ import { ApiProducts } from '../../../model/api-products/api-products';
   styleUrl: './product.component.css'
 })
 export class ProductComponent implements OnInit{
+
+  constructor(private productService:ProductService, private router:Router){}
 
 
 ngOnInit(): void {
@@ -65,7 +69,11 @@ showAddedToWishListMessage() {
 
 
 
-selectProduct(){
-  this.onSelectProduct.emit(this.product);
+selectProduct(product:ApiProducts,event:Event){
+  // this.onSelectProduct.emit(this.product);
+  event.preventDefault()
+  this.productService.selectedProduct=product;
+  this.productService.showSelectedP.next(true);
+  //this.router.navigate(['products/detail'])
 }
 }
