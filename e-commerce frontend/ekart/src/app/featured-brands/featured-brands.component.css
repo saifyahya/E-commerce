@@ -1,0 +1,14 @@
+.featured-product-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:270px;
+    margin:10px 10px;
+    padding: 20 30;
+    background-color: #fff;
+}
+
+.description{
+    margin: 10px;
+    text-align: center;
+}

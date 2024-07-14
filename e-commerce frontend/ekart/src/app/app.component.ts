@@ -9,11 +9,7 @@ import { HeaderComponent } from './header/header.component';
 })
 export class AppComponent {
 
-searchedInput:string='';
 
-getSearchedInput(value: string) {
-this.searchedInput=value;
-}
   title = 'ekart';
 
 

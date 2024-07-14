@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, DoCheck } from '@angular/core';
 
 @Component({
   selector: 'app-category',
@@ -6,6 +6,22 @@ import { Component } from '@angular/core';
   styleUrl: './category.component.css'
 })
 export class CategoryComponent {
+   filteredCategory:string[]=[];
+  takingInput(e: Event) {
+    const inputElement = e.target as HTMLInputElement;
+    console.log(inputElement.value);
+    this.saerchInCategories(inputElement.value)
+
+  }
+  saerchInCategories(value:string){
+   this.filteredCategory=this.categories.filter((str)=>str.includes(value))
+  }
+
+checkCategoryUpdate():string[]{
+if(this.filteredCategory.length>0)
+  return this.filteredCategory
+return this.categories;
+}
 
   categories: string[] = [
     "beauty",
@@ -35,8 +51,9 @@ export class CategoryComponent {
   ];
 
   constructor() { }
+  
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
   }
 
   formatCategory(category: string): string {
