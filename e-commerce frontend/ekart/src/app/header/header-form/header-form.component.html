@@ -1,8 +1,8 @@
 <div class="form">
     <form action="">
-        <div class="category-dropdwon"> Drop Down Menu</div>
+        <div class="category-dropdwon" style-directive [StyleDirective]="{'new-class':true,'old-class':false,'saif-class':true}"> Drop Down Menu</div>
         <div class="search-input"><input type="search"  #searchInput></div>
-        <button class="searchicon"  (click)="getSearchedInput($event,searchInput)">
+        <button class="searchicon"  (click)="getSearchedInput($event,searchInput)" >
             <i class="fa-solid fa-magnifying-glass"></i>
         </button>
     </form>

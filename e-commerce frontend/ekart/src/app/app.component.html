@@ -1,2 +1,21 @@
-<app-header (sendSearchResultToApp)="getSearchedInput($event)"></app-header>
-<app-container [recievedSearchedInput]="searchedInput"></app-container>
+<app-header ></app-header>
+<router-outlet #outlet="outlet"></router-outlet>
+
+<!-- <app-container  ></app-container> -->
+<div class="latest-products">
+    <div class="title">
+        <h1>Latest Arrival in Most Popular Brands</h1>
+    </div>
+    <app-featured-brands>
+        <h3 class="heading">New Arrival In Zara</h3>
+        <button class="call-to-action">Learn More</button>
+    </app-featured-brands>
+    <app-featured-brands>
+        <h3 class="heading">New Arrival In Adidas</h3>
+        <button class="call-to-action">Learn More</button>
+    </app-featured-brands>
+    <app-featured-brands>
+        <h3 class="heading">New Arrival In Nike</h3>
+        <button class="call-to-action">Learn More</button>
+    </app-featured-brands>
+</div>

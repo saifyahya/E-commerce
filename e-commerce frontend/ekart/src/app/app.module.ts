@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule} from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { BottomHeaderComponent } from './header/bottom-header/bottom-header.component';
@@ -12,12 +12,15 @@ import { ProductComponent } from './container/product-list/product/product.compo
 import { FilterComponent } from './container/product-list/filter/filter.component';
 import { FormsModule } from '@angular/forms';
 import { ProductDetailComponent } from './container/product-detail/product-detail.component';
-import { FeaturedBrandsComponent } from './container/featured-brands/featured-brands.component';
+import { FeaturedBrandsComponent } from './featured-brands/featured-brands.component';
 import { WhishListMessage } from './container/directives/WhishListMessage.directive';
 import { CartsComponent } from './container/carts/carts.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ProductService } from './service/product/product.service';
 import { CategoryComponent } from './container/category/category.component';
+import { provideRouter } from '@angular/router';
+import { ContactComponent } from './contact/contact/contact.component';
+import { StyleDirective } from './container/directives/StyleDirective.directive';
 
 
 @NgModule({
@@ -34,7 +37,9 @@ import { CategoryComponent } from './container/category/category.component';
     FeaturedBrandsComponent,
     WhishListMessage,
     CartsComponent,
-    CategoryComponent
+    CategoryComponent,
+    ContactComponent,
+    StyleDirective
   ],
   imports: [
     BrowserModule,

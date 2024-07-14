@@ -25,11 +25,28 @@ public class OnlineProductServiceImpl implements IOnlineProductService {
 
     @Override
     public ProductApiResponseDto getAllOnlineProducts() {
+        return getDataFromApi("");
 
+    }
+
+    @Override
+    public ProductApiResponseDto getProductsByName(String name) {
+    return getDataFromApi("/search?q="+name);
+    }
+
+    @Override
+    public ProductApiResponseDto getProductsByCategory(String category) {
+        return getDataFromApi("/category/"+category);
+
+    }
+
+    private ProductApiResponseDto getDataFromApi(String urlPath){
         OkHttpClient client = new OkHttpClient();
+        String path="https://dummyjson.com/products"+urlPath;
+        System.out.println("path to call: "+path);
 
         Request request = new Request.Builder()
-                .url("https://dummyjson.com/products")
+                .url(path)
                 .get()
                 .build();
 

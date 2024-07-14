@@ -40,7 +40,75 @@
 }
 
 .ekart-top-nav a:hover {
-    text-decoration: underline;
+    transform: scale(1.2);
+
 }
 
 
+.btn-cart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25;
+    height: 25;
+    border-radius: 10px;
+    border: none;
+    background-color: transparent;
+    position: relative;
+    text-decoration: none;
+  }
+  
+  .btn-cart::after {
+    width: fit-content;
+    height: fit-content;
+    position: absolute;
+    font-size: 15px;
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    opacity: 0;
+    visibility: hidden;
+    transition: .2s linear;
+    top: 115%;
+  }
+  
+  .icon-cart {
+    width: 30px;
+    height: 30px;
+    transition: .2s linear;
+    font-weight: bold;
+  }
+  
+  .icon-cart path {
+    fill: rgb(240, 8, 8);
+    transition: .2s linear;
+  }
+  
+  .btn-cart:hover > .icon-cart {
+    transform: scale(1.2);
+  }
+  
+  .btn-cart:hover > .icon-cart path {
+    fill: rgb(240, 8, 8);
+  }
+  
+  .btn-cart:hover::after {
+    visibility: visible;
+    opacity: 1;
+    top: 105%;
+  }
+  
+
+  .quantity{
+    margin-left: 2px;
+  }
+  .fa-heart{
+    font-size: 25px;
+   color:rgb(240, 8, 8);
+  }
+
+  .whish-with-heart{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }

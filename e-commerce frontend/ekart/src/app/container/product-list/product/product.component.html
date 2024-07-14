@@ -11,7 +11,7 @@
             <div class="tooltip" *ngIf="addToListMessage && !addedToListMessage">Add to wish list</div>
         </div>
         <span class="ribbon" *ngIf="product.discountPercentage>5">{{product.discountPercentage+'% OFF'}}</span>
-        <a (click)="selectProduct()" href="#popup1">
+        <a (click)="selectProduct(product,$event)">
             <img [src]="product.images[0]" alt="image">
         </a>
         <p class="price">{{product.price | currency}}</p>

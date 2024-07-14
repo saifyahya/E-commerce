@@ -1,8 +1,9 @@
 <div class="category-list">
-    <h2>Categories</h2>
-    <input type="text" class="search-input" placeholder="Search categories...">
-    <ul>
-      <li *ngFor="let category of categories">{{ formatCategory(category) }}</li>
-    </ul>
-  </div>
-  
+  <h2>Categories</h2>
+  <input type="text" class="search-input" placeholder="Search categories..." (input)="takingInput($event)">
+  <ul>
+    <li *ngFor="let category of checkCategoryUpdate(); let i = index" [routerLink]="['/products']" [queryParams]="{ category: checkCategoryUpdate().at(i)}">
+      {{ formatCategory(category) }}
+    </li>
+  </ul>
+</div>

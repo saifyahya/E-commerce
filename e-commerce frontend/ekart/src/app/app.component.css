@@ -2,3 +2,21 @@
     user-select: none; /* Prevents text selection */
   
   }
+  
+  .latest-products{
+    background-color: #2b2b2b;
+    display: flex;
+  }
+
+  .latest-products .title{
+  color: white;
+  }
+
+  .call-to-action{
+    background-color: #2b2b2b;
+    color:#fff;
+    width:50%;
+    padding: 10px;
+    margin: 5px;
+    text-align: center;
+}
