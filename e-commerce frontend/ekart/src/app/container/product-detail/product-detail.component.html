@@ -1,4 +1,5 @@
-<div *ngIf="selectedProduct">
+
+<div *ngIf="selectedProduct && checkCurrentRout()" >
   <div class="popup">
 
     <img [src]="selectedProduct.images[0]">
@@ -13,7 +14,7 @@
     </div>
 
     <div class="category">
-      <span *ngFor="let tag of selectedProduct.tags">{{tag}}</span> 
+      <span *ngFor="let tag of selectedProduct.tags">{{tag}}</span>
     </div>
 
     <div class="description">
@@ -38,26 +39,53 @@
       <hr>
       <div class="colorsStock"><span>Black</span> <span>Red</span> <span>White</span></div>
     </div>
-    <a class="close" (click)="close($event)" >&times; </a>
+    <a class="close" (click)="close($event)">&times; </a>
 
     <div class="totalCheckoutPrice">
-      <div class="quantitySelect" *ngIf="selectedProduct.stock>1"> 
+      <div class="quantitySelect" *ngIf="selectedProduct.stock>1">
         <select [(ngModel)]="selectedQuantity">
-          <option [disabled]="selectedProduct.stock<1" *ngFor="let i of getStockArray()" [ngValue]="i">Quantity = {{i}}</option>
+          <option [disabled]="selectedProduct.stock<1" *ngFor="let i of getStockArray()" [ngValue]="i">Quantity = {{i}}
+          </option>
         </select>
-       </div>
+      </div>
 
       <div class="" *ngIf="selectedProduct.stock>1"> <span>Total Price: </span>
-        <span>{{(getPriceAfterDiscount(selectedProduct)*selectedQuantity).toFixed(2) | currency}}</span> <br><hr>
-        <button class="button"[disabled]="selectedProduct.stock<1">
-          <svg viewBox="0 0 16 16" class="bi bi-cart-check" height="24" width="24" xmlns="http://www.w3.org/2000/svg" fill="#fff">
-           <path d="M11.354 6.354a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"></path>
-           <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-         </svg>
-           <p class="text">Buy Now</p>
-         </button>
-      </div> 
+        <span>{{(getPriceAfterDiscount(selectedProduct)*selectedQuantity).toFixed(2) | currency}}</span> <br>
+        <hr>
+        <!-- <button class="button" [disabled]="selectedProduct.stock<1">
+          <svg viewBox="0 0 16 16" class="bi bi-cart-check" height="24" width="24" xmlns="http://www.w3.org/2000/svg"
+            fill="#fff">
+            <path
+              d="M11.354 6.354a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z">
+            </path>
+            <path
+              d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z">
+            </path>
+          </svg>
+          <p class="text">Buy Now</p>
+        </button> -->
+        <div class="button" (click)="addToCart($event)">
+          <div class="button-wrapper">
+            <div class="text">{{addToCartText}}</div>
+            <span class="icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-cart2"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"
+                ></path>
+              </svg>
+            </span>
+          </div>
+        </div>
+        
+      </div>
 
-</div>
+    </div>
   </div>
 </div>

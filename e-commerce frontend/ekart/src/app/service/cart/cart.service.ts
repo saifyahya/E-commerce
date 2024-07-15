@@ -11,26 +11,27 @@ cartQuantitySubject = new Subject<number>();
 cartPriceSubject = new Subject<number>();
 cartQuantityNumber:number=0;
 cartPriceNumber:number=0;
-cart!:Cart;
-addToCart(product:ApiProducts,quantity:number,price:number):void{
+cart:Cart=new Cart("",0,0,[]);
+
+addToCart(product:ApiProducts,price:number):void{
 this.cart.products.push(product)
-this.cart.quantity+=quantity;
+this.cart.quantity+=product.quantity;
 this.cart.price+=price;
 
 this.cartPriceNumber+=price
-this.cartQuantityNumber+=quantity
+this.cartQuantityNumber+=product.quantity;
 
 this.updateCart();
 }
 
-removeFromCart(product:ApiProducts):void{
+removeFromCart(product:ApiProducts,price:number):void{
   if(this.cart.quantity!==0){
     const newProducts = this.cart.products.filter((p)=>p.id!=product.id)
-this.cart.price-=product.price;
-this.cart.quantity-=1;
+this.cart.price-=price;
+this.cart.quantity-=product.quantity;
 this.cart.products=newProducts;
-this.cartPriceNumber-=product.price;
-this.cartQuantityNumber-=1;
+this.cartPriceNumber-=price;
+this.cartQuantityNumber-=product.quantity;
 
 this.updateCart()
   }
@@ -49,6 +50,10 @@ DeleteCart():void{
   this.cartQuantityNumber=0;
 
   this.updateCart();
+}
+
+searchIncart(product:ApiProducts):boolean{
+  return this.cart.products.filter((p)=>p.id===product.id).length>0
 }
 
   constructor() { 

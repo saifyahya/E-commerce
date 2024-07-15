@@ -1,9 +1,10 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
 import { Product } from '../../../model/product/product';
 import { EmptyExpr } from '@angular/compiler';
 import { ApiProducts } from '../../../model/api-products/api-products';
 import { ProductService } from '../../../service/product/product.service';
 import { Router } from '@angular/router';
+import { WhishlistService } from '../../../service/whishlist/whishlist.service';
 
 @Component({
   selector: 'app-product',
@@ -11,8 +12,9 @@ import { Router } from '@angular/router';
   styleUrl: './product.component.css'
 })
 export class ProductComponent implements OnInit{
+  
 
-  constructor(private productService:ProductService, private router:Router){}
+  constructor(private productService:ProductService, private router:Router,private whishlistService:WhishlistService){}
 
 
 ngOnInit(): void {
@@ -28,7 +30,18 @@ hideAddToWishListMessage() {
 }
 
 showAddedToWishListMessage() {
-  this.addedToListMessage=!this.addedToListMessage;
+  if(!this.addedToListMessage){
+    this.whishlistService.addTowhishList(this.product);
+    this.addedToListMessage=true
+    
+  }
+  else{
+    this.whishlistService.removeFromwhishList(this.product);
+    this.addedToListMessage=false;
+
+  }
+  
+
 
 }
 

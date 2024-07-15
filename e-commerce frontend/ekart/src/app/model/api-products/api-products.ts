@@ -10,6 +10,7 @@ export class ApiProducts {
   stock: number;
   brand: string;
   tags: string[];
+  quantity:number=1;
 
   constructor(
     id: number,

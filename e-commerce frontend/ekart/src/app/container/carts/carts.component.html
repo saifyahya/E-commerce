@@ -1,7 +1,34 @@
-<div class="carts-container">
-    <h3>Shopping Carts</h3>
-<div class="availableCarts">
 
+<div class="product-list" *ngFor="let product of cart.products">
+    <div class="upper-card">
+        <div class="wish-list">
+            <!-- <i class="fa-regular fa-heart" 
+                [ngStyle]="{'color': addedToListMessage ? 'red' : ''}"
+                (mouseenter)="showAddToWishListMessage()" 
+                (mouseleave)="hideAddToWishListMessage()"
+                (click)="showAddedToWishListMessage()">
+            </i> -->
+            <!-- <div class="tooltip" *ngIf="addToListMessage && !addedToListMessage">Add to wish list</div> -->
+        </div>
+        <span class="ribbon" *ngIf="product.discountPercentage>5">{{product.discountPercentage+'% OFF'}}</span>
+        <!-- <a (click)="selectProduct(product,$event)"> -->
+            <img [src]="product.images[0]" alt="image">
+        <!-- </a> -->
+        <p class="price">{{(product.quantity*getPriceAfterDiscount(product)).toFixed(2)| currency}}</p>
+        <span class="price-quantity">{{'x'+ product.quantity+' items'}}</span>
+    </div>
+    <h5>{{product.title}}</h5>
+    <button (click)="removeFromCart(product)">Remove From Cart</button>
 </div>
-
+<div class="toalPrice" *ngIf="cart.quantity>0;else noCart">
+    <p>{{'Cart Total Price: ' +cart.price.toFixed(2)}}</p>
+    <p>{{'Cart Total Quantity: ' +cart.quantity}}</p>
 </div>
+<ng-template #noCart >
+    <div class="noCartsDiv">
+        <div >You do not have Carts</div>
+        <a routerLink="/products">Discover new Products</a>
+    </div>
+  
+</ng-template>
+<button *ngIf="cart.quantity>0">checkout</button>

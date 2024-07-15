@@ -21,6 +21,7 @@ import { CategoryComponent } from './container/category/category.component';
 import { provideRouter } from '@angular/router';
 import { ContactComponent } from './contact/contact/contact.component';
 import { StyleDirective } from './container/directives/StyleDirective.directive';
+import { WhishlistComponent } from './container/whishlist/whishlist.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { StyleDirective } from './container/directives/StyleDirective.directive'
     CartsComponent,
     CategoryComponent,
     ContactComponent,
-    StyleDirective
+    StyleDirective,
+    WhishlistComponent
   ],
   imports: [
     BrowserModule,

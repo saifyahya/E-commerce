@@ -3,13 +3,12 @@
     <div class="content">
         <!-- <app-product-list [searchedInput]="recievedSearchedInput" (sendSelectedProduct)="recieveSelectedProduct($event)">
         </app-product-list> -->
-        <app-product-list  (sendSelectedProduct)="recieveSelectedProduct($event)">
-        </app-product-list>
+        <!-- <app-product-list  (sendSelectedProduct)="recieveSelectedProduct($event)">
+        </app-product-list> -->
         
+        
+        <router-outlet></router-outlet>
         <product-detail *ngIf="showProductDetails"></product-detail>
-        
-        <!-- <router-outlet></router-outlet> -->
-
     </div>
 
 </div>

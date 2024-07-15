@@ -2,7 +2,7 @@
 <div class="product-list">
     <div class="upper-card">
         <div class="wish-list">
-            <i class="fa-regular fa-heart" 
+            <i class="fa-regular fa-heart" [class.fa-solid]="addedToListMessage"
                 [ngStyle]="{'color': addedToListMessage ? 'red' : ''}"
                 (mouseenter)="showAddToWishListMessage()" 
                 (mouseleave)="hideAddToWishListMessage()"

@@ -8,7 +8,7 @@ export class Cart{
 
      price:number;
 
-     products:ApiProducts[];
+ products:ApiProducts[];
 
     constructor(code:string,quantity:number,price:number,products:ApiProducts[]){
         this.code=code;
